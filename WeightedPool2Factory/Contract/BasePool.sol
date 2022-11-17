@@ -14,6 +14,7 @@
 
 pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
+
 import "../interfaces/IAssetManager.sol";
 import "../interfaces/IControlledPool.sol";
 import "../interfaces/IVault.sol";
@@ -87,12 +88,10 @@ abstract contract BasePool is
     uint256 private constant _SWAP_FEE_PERCENTAGE_OFFSET = 192;
     uint256 private constant _RECOVERY_MODE_BIT_OFFSET = 255;
 
-
     // A fee can never be larger than FixedPoint.ONE, which fits in 60 bits, so 63 is more than enough.
     uint256 private constant _SWAP_FEE_PERCENTAGE_BIT_LENGTH = 63;
 
     bytes32 private immutable _poolId;
-
 
     // Note that this value is immutable in the Vault, so we can make it immutable here and save gas
     IProtocolFeesCollector private immutable _protocolFeesCollector;

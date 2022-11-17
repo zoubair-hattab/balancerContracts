@@ -281,7 +281,6 @@ abstract contract BaseWeightedPool is BaseMinimalSwapInfoPool {
             getSwapFeePercentage()
         );
 
-
         _require(bptAmountOut >= minBPTAmountOut, Errors.BPT_OUT_MIN_AMOUNT);
 
         return (bptAmountOut, amountsIn);
