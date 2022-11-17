@@ -28,6 +28,7 @@ import "./BalancerPoolToken.sol";
 import "./BasePoolAuthorization.sol";
 import "./PoolPriceOracle.sol";
 import "./Buffer.sol";
+
 import "../interfaces/IMinimalSwapInfoPool.sol";
 import "../interfaces/IPriceOracle.sol";
 

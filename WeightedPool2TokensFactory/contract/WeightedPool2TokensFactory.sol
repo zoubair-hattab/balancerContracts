@@ -15,11 +15,11 @@
 pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
 
-
 import "../interfaces/IVault.sol";
 
 import "./BasePoolFactory.sol";
 import "./FactoryWidePauseWindow.sol";
+
 import "./WeightedPool2Tokens.sol";
 
 contract WeightedPool2TokensFactory is BasePoolFactory, FactoryWidePauseWindow {

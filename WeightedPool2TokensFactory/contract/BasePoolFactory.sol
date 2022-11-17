@@ -16,6 +16,7 @@ pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
 
 import "../interfaces/IVault.sol";
+import "../interfaces/IBasePool.sol";
 
 /**
  * @dev Base contract for Pool factories.
