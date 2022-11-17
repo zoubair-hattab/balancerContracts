@@ -17,14 +17,7 @@ pragma solidity ^0.7.0;
 import "./BalancerErrors.sol";
 import "../interfaces/IAuthentication.sol";
 
-/**
- * @dev Building block for performing access control on external functions.
- *
- * This contract is used via the `authenticate` modifier (or the `_authenticateCaller` function), which can be applied
- * to external functions to only make them callable by authorized accounts.
- *
- * Derived contracts must implement the `_canPerform` function, which holds the actual access control logic.
- */
+
 abstract contract Authentication is IAuthentication {
     bytes32 private immutable _actionIdDisambiguator;
 

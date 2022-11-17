@@ -15,7 +15,7 @@
 pragma solidity ^0.7.0;
 
 import "./IAuthentication.sol";
-import "../interfaces/IVault.sol";
+import "./IVault.sol";
 
 interface IAuthorizerAdaptor is IAuthentication {
     /**

@@ -17,8 +17,8 @@ pragma solidity ^0.7.0;
 import "./IERC20.sol";
 
 /**
- * @dev Interface for the WETH token contract used internally for wrapping and unwrapping, to support
- * sending and receiving ETH in joins, swaps, and internal balance deposits and withdrawals.
+ * @dev Interface for WETH9.
+ * See https://github.com/gnosis/canonical-weth/blob/0dd1ea3e295eef916d0c6223ec63141137d22d67/contracts/WETH9.sol
  */
 interface IWETH is IERC20 {
     function deposit() external payable;

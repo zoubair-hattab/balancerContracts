@@ -15,7 +15,6 @@
 pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
 
-
 import "../interfaces/IRateProvider.sol";
 import "./ProtocolFeeCache.sol";
 import "../interfaces/InvariantGrowthProtocolSwapFees.sol";

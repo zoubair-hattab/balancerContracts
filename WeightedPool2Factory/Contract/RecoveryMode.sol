@@ -18,7 +18,6 @@ import "./BalancerErrors.sol";
 import "./BasePoolUserData.sol";
 import "../interfaces/IRecoveryMode.sol";
 
-
 import "./FixedPoint.sol";
 
 import "./BasePoolAuthorization.sol";

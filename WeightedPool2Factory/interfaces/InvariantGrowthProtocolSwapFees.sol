@@ -14,10 +14,9 @@
 
 pragma solidity ^0.7.0;
 
-import "../Contract/FixedPoint.sol";
-import "../Contract/Math.sol";
-import "../Contract/ProtocolFees.sol";
-
+import "../contract/FixedPoint.sol";
+import "../contract/Math.sol";
+import "../contract/ProtocolFees.sol";
 
 library InvariantGrowthProtocolSwapFees {
     using FixedPoint for uint256;

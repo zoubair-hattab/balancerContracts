@@ -25,32 +25,11 @@ import "./TemporarilyPausable.sol";
 import "./ERC20.sol";
 import "./FixedPoint.sol";
 import "./Math.sol";
-
 import "./BalancerPoolToken.sol";
 import "./BasePoolAuthorization.sol";
 import "./RecoveryMode.sol";
 
-// solhint-disable max-states-count
 
-/**
- * @notice Reference implementation for the base layer of a Pool contract.
- * @dev Reference implementation for the base layer of a Pool contract that manages a single Pool with optional
- * Asset Managers, an admin-controlled swap fee percentage, and an emergency pause mechanism.
- *
- * This Pool pays protocol fees by minting BPT directly to the ProtocolFeeCollector instead of using the
- * `dueProtocolFees` return value. This results in the underlying tokens continuing to provide liquidity
- * for traders, while still keeping gas usage to a minimum since only a single token (the BPT) is transferred.
- *
- * Note that neither swap fees nor the pause mechanism are used by this contract. They are passed through so that
- * derived contracts can use them via the `_addSwapFeeAmount` and `_subtractSwapFeeAmount` functions, and the
- * `whenNotPaused` modifier.
- *
- * No admin permissions are checked here: instead, this contract delegates that to the Vault's own Authorizer.
- *
- * Because this contract doesn't implement the swap hooks, derived contracts should generally inherit from
- * BaseGeneralPool or BaseMinimalSwapInfoPool. Otherwise, subclasses must inherit from the corresponding interfaces
- * and implement the swap callbacks themselves.
- */
 abstract contract BasePool is
     IBasePool,
     IControlledPool,

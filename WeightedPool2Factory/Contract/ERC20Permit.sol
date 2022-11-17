@@ -3,7 +3,6 @@
 pragma solidity ^0.7.0;
 
 import "../interfaces/IERC20Permit.sol";
-
 import "./ERC20.sol";
 import "./EOASignaturesValidator.sol";
 

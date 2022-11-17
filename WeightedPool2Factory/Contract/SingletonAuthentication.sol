@@ -13,10 +13,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pragma solidity ^0.7.0;
-
 import "../interfaces/IAuthorizerAdaptor.sol";
 import "../interfaces/IVault.sol";
-
 
 import "./Authentication.sol";
 
