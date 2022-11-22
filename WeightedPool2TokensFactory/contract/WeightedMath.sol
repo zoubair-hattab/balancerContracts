@@ -16,7 +16,6 @@ pragma solidity ^0.7.0;
 
 import "./FixedPoint.sol";
 import "./Math.sol";
-
 import "../interfaces/InputHelpers.sol";
 
 /* solhint-disable private-vars-leading-underscore */

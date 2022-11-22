@@ -17,7 +17,6 @@ pragma experimental ABIEncoderV2;
 
 import "./WordCodec.sol";
 
-
 /**
  * @dev This module provides an interface to store seemingly unrelated pieces of information, in particular used by
  * Weighted Pools of 2 tokens with a price oracle.

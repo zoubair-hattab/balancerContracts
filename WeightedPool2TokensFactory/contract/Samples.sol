@@ -15,7 +15,6 @@
 pragma solidity ^0.7.0;
 
 import "./WordCodec.sol";
-
 import "../interfaces/IPriceOracle.sol";
 
 /**
@@ -34,8 +33,8 @@ import "../interfaces/IPriceOracle.sol";
  *
  * All samples are stored in a single 256 bit word with the following structure:
  *
- * [    log pair price     |        bpt price      |       invariant       |  timestamp ]
- * [ instant | accumulator | instant | accumulator | instant | accumulator |            ]
+ * [    log pair price     |        bpt price      |       invariant       ]
+ * [ instant | accumulator | instant | accumulator | instant | accumulator |  timestamp ]
  * [  int22  |    int53    |  int22  |    int53    |  int22  |    int53    |    uint31  ]
  * MSB                                                                                LSB
  *
@@ -186,7 +185,7 @@ library Samples {
             accLogBptPrice.encodeInt53(_ACC_LOG_BPT_PRICE_OFFSET) |
             instLogInvariant.encodeInt22(_INST_LOG_INVARIANT_OFFSET) |
             accLogInvariant.encodeInt53(_ACC_LOG_INVARIANT_OFFSET) |
-            _timestamp.encodeUint(_TIMESTAMP_OFFSET); // Using 31 bits
+            _timestamp.encodeUint31(_TIMESTAMP_OFFSET);
     }
 
     /**

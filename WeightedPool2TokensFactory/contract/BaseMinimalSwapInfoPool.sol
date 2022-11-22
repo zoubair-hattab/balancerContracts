@@ -21,18 +21,41 @@ import "../interfaces/IMinimalSwapInfoPool.sol";
 /**
  * @dev Extension of `BasePool`, adding a handler for `IMinimalSwapInfoPool.onSwap`.
  *
- * Derived contracts must call `BasePool`'s constructor, and implement `_onSwapGivenIn` and `_onSwapGivenOut` along with
- * `BasePool`'s virtual functions. Inheriting from this contract lets derived contracts choose the Two Token or Minimal
- * Swap Info specialization settings.
+ * Derived contracts must implement `_onSwapGivenIn` and `_onSwapGivenOut` along with `BasePool`'s virtual functions.
  */
 abstract contract BaseMinimalSwapInfoPool is IMinimalSwapInfoPool, BasePool {
+    constructor(
+        IVault vault,
+        string memory name,
+        string memory symbol,
+        IERC20[] memory tokens,
+        uint256 swapFeePercentage,
+        uint256 pauseWindowDuration,
+        uint256 bufferPeriodDuration,
+        address owner
+    )
+        BasePool(
+            vault,
+            tokens.length == 2 ? IVault.PoolSpecialization.TWO_TOKEN : IVault.PoolSpecialization.MINIMAL_SWAP_INFO,
+            name,
+            symbol,
+            tokens,
+            swapFeePercentage,
+            pauseWindowDuration,
+            bufferPeriodDuration,
+            owner
+        )
+    {
+        // solhint-disable-previous-line no-empty-blocks
+    }
+
     // Swap Hooks
 
     function onSwap(
         SwapRequest memory request,
         uint256 balanceTokenIn,
         uint256 balanceTokenOut
-    ) public virtual override returns (uint256) {
+    ) external view virtual override returns (uint256) {
         uint256 scalingFactorTokenIn = _scalingFactor(request.tokenIn);
         uint256 scalingFactorTokenOut = _scalingFactor(request.tokenOut);
 
@@ -80,7 +103,7 @@ abstract contract BaseMinimalSwapInfoPool is IMinimalSwapInfoPool, BasePool {
         SwapRequest memory swapRequest,
         uint256 balanceTokenIn,
         uint256 balanceTokenOut
-    ) internal virtual returns (uint256);
+    ) internal view virtual returns (uint256);
 
     /*
      * @dev Called when a swap with the Pool occurs, where the amount of tokens exiting the Pool is known.
@@ -96,5 +119,5 @@ abstract contract BaseMinimalSwapInfoPool is IMinimalSwapInfoPool, BasePool {
         SwapRequest memory swapRequest,
         uint256 balanceTokenIn,
         uint256 balanceTokenOut
-    ) internal virtual returns (uint256);
+    ) internal view virtual returns (uint256);
 }
